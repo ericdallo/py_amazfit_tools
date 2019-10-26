@@ -9,7 +9,6 @@ class ImageElement(CoordinatesElement):
         self._imageIndex = None
         super(ImageElement, self).__init__(parameter = parameter, parent = parent, name = name)
 
-
     def getImageIndex(self):
         return self._imageIndex
 
@@ -33,8 +32,8 @@ class ImageElement(CoordinatesElement):
             from PIL import Image
             # temp = Image.new('RGBA', (360, 360))
             # temp.paste(bitmap, (180 - x, 180 - y), bitmap)
-            temp = Image.new('RGBA', (Config.getImageSize(), Config.getImageSize()))
-            temp.paste(bitmap, (Config.getImageSizeHalf() - x, Config.getImageSizeHalf() - y), bitmap)
+            temp = Image.new('RGBA', (Config.getImageWidth(), Config.getImageHeight()))
+            temp.paste(bitmap, (Config.getImageWidthHalf() - x, Config.getImageHeightHalf() - y), bitmap)
             temp = temp.rotate(angle)
             drawer.paste(temp, (0,0), temp)
 

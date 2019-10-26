@@ -1,7 +1,9 @@
 from watchFaceParser.models.elements.watchFace import WatchFace
 from watchFaceParser.config import Config
+from PIL import Image, ImageDraw
 
 class PreviewGenerator:
+
     @staticmethod
     def createAnimation(descriptor, images, states):
         previewWatchFace = WatchFace(descriptor)
@@ -18,9 +20,6 @@ class PreviewGenerator:
 
     @staticmethod
     def createFrame(watchFace, resources, state):
-        from PIL import Image, ImageDraw
-
-        # graphics = Image.new('RGBA', (360, 360))
-        graphics = Image.new('RGBA', (Config.getImageSize(), Config.getImageSize()))
+        graphics = Image.new('RGBA', (Config.getImageWidth(), Config.getImageHeight()))
         watchFace.draw3(graphics, resources, state)
         return graphics
